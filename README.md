@@ -2,6 +2,7 @@
 
 run the backend
 ```bash
+yarn # install depedencies
 yarn workspace backend dev
 ```
 access the swagger ui
@@ -13,6 +14,7 @@ http://localhost:3030/api/docs/ #Swagger UI
 
 compile the backend:
 ```bash
+yarn # install depedencies
 yarn workspace backend compile
 ```
 so run the frontend
