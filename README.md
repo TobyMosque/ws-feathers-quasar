@@ -1,14 +1,27 @@
-how to test the frontend
+**how to test the backend**
 
-build the backend:
+run the backend
+```bash
+yarn workspace backend dev
 ```
-yarn workspace backend build
+access the swagger ui
+```bash
+http://localhost:3030/api/docs/ #Swagger UI
 ```
-so, compile the backend:
-```
+
+**how to test the frontend**
+
+compile the backend:
+```bash
 yarn workspace backend compile
 ```
 so run the frontend
-```
+```bash
 yarn workspace frontend quasar dev -m ssr
+```
+access the frontend
+```bash
+http://localhost:9100/ #frontend
+and
+http://localhost:9100/api/docs/ #Swagger UI
 ```
