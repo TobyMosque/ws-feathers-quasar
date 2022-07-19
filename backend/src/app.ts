@@ -1,6 +1,7 @@
 import compress from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
+import path from 'path';
 
 import feathers from '@feathersjs/feathers';
 import configuration from '@feathersjs/configuration';
@@ -15,6 +16,7 @@ import channels from './channels';
 import { HookContext as FeathersHookContext } from '@feathersjs/feathers';
 // Don't remove this comment. It's needed to format import lines nicely.
 export type HookContext<T = any> = { app: Application } & FeathersHookContext<T>;
+import swagger from 'feathers-swagger';
 
 import { Express } from 'express';
 
@@ -31,6 +33,17 @@ export default function bootstrap(expressApp: Express) {
   app.use(compress());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+  app.configure(swagger({
+    docsPath: '/api/docs',
+    uiIndex: true,
+    specs: {
+      info: {
+        title: 'A test',
+        description: 'A description',
+        version: '1.0.0'
+      }
+    }
+  }));
   // app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
   // Host the public folder
   // app.use('/api', express.static(app.get('public')));

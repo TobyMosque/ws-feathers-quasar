@@ -17,7 +17,20 @@ export default function (app: Application): void {
   };
 
   // Initialize our service with any options it requires
-  app.use('/api/entity', new Entities(options, app));
+  const handler = new Entities(options, app);
+  app.use('/api/entity', Object.assign(handler, {
+    docs:  {
+      description: 'Entity',
+      definition: {
+        type: 'object',
+        required: [ 'id', 'name' ],
+        properties: {
+          username: { type: 'string', description: 'Id' },
+          password: { type: 'string', description: 'Name' }
+        }
+      }
+    }
+  }));
 
   // Get our initialized service so that we can register hooks
   const service = app.service('api/entity');
