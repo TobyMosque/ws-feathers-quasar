@@ -320,6 +320,15 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@feathersjs/adapter-commons@5.0.0-pre.18":
+  version "5.0.0-pre.18"
+  resolved "https://registry.yarnpkg.com/@feathersjs/adapter-commons/-/adapter-commons-5.0.0-pre.18.tgz#5a5094f9899bcbe0dbfda939e9fb053b72775762"
+  integrity sha512-YlVpvPngvHIgR5yembL5216MTvRjr3b44Stv6WeFd1rELXHmHf/6J0DwaAJcBbCjrZDyMa/MYoUGnRpqimIl8Q==
+  dependencies:
+    "@feathersjs/commons" "^5.0.0-pre.18"
+    "@feathersjs/errors" "^5.0.0-pre.18"
+    "@feathersjs/feathers" "^5.0.0-pre.18"
+
 "@feathersjs/adapter-commons@^4.3.6":
   version "4.5.15"
   resolved "https://registry.yarnpkg.com/@feathersjs/adapter-commons/-/adapter-commons-4.5.15.tgz#f7dd1a250b0a58fa735ed31b63e25e35b57418aa"
@@ -329,12 +338,17 @@
     "@feathersjs/errors" "^4.5.15"
     "@feathersjs/feathers" "^4.5.15"
 
+"@feathersjs/commons@5.0.0-pre.18":
+  version "5.0.0-pre.18"
+  resolved "https://registry.yarnpkg.com/@feathersjs/commons/-/commons-5.0.0-pre.18.tgz#128cee674e18cbe7dcb91c452634f2c6a29d4316"
+  integrity sha512-+W+Vk2nz03XSSla+UPmke0xwmYNtfGazfexiVo49UA8YxDLio8QWs+B5OVgX1V1tD+Men3qlNOmAP0VHesYqTA==
+
 "@feathersjs/commons@^4.3.0", "@feathersjs/commons@^4.5.15":
   version "4.5.15"
   resolved "https://registry.yarnpkg.com/@feathersjs/commons/-/commons-4.5.15.tgz#2f9c2599fd93607206ee40ab0e5639b79c7781b8"
   integrity sha512-eVEcLJL3GcPQBQcD77jI3fZ4MMx+iD02Px2Z1lDw+cn/iGCeQkWWAPQs4Tp+HGR1rTL5JO+unyhzN8V9X7OYmw==
 
-"@feathersjs/commons@^5.0.0-pre.27":
+"@feathersjs/commons@^5.0.0-pre.18", "@feathersjs/commons@^5.0.0-pre.27":
   version "5.0.0-pre.27"
   resolved "https://registry.yarnpkg.com/@feathersjs/commons/-/commons-5.0.0-pre.27.tgz#efec6bd4d7df0803a02c11e67fc8b896b3cd155d"
   integrity sha512-1X4nDbsYFtI6EBIOCu6XfuHac/8Wi7xo6L0DTSSUsOCW8rAN6elrL8o90mhXf0Sbk6RIF+2F375YMZKZjnL/mQ==
@@ -355,7 +369,7 @@
   dependencies:
     debug "^4.3.3"
 
-"@feathersjs/errors@^5.0.0-pre.20":
+"@feathersjs/errors@^5.0.0-pre.18", "@feathersjs/errors@^5.0.0-pre.20":
   version "5.0.0-pre.27"
   resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-5.0.0-pre.27.tgz#9780ca1b6400139b26b45b7305f1ca621173ef41"
   integrity sha512-cuehl20jovZFVN14SppmgX9FMaUh+qlcNT+d5Tzp56NLYNFo2ypXMZIl+aPGz/sT1eonDSxY9PooYEnUQ6JxqQ==
@@ -373,6 +387,15 @@
     lodash "^4.17.21"
     uberproto "^2.0.6"
 
+"@feathersjs/feathers@5.0.0-pre.18":
+  version "5.0.0-pre.18"
+  resolved "https://registry.yarnpkg.com/@feathersjs/feathers/-/feathers-5.0.0-pre.18.tgz#4ce22c00e17e97ffc19f3dd7e0a6cb11756615a9"
+  integrity sha512-ITe6QBDzY1ye5k75w0c5hE1VnNAvf+OntUqYcTWtWkhpiLnti5MRwF2+jJ8w3taspdf3bYU/tTweYfrmfa00uw==
+  dependencies:
+    "@feathersjs/commons" "^5.0.0-pre.18"
+    "@feathersjs/hooks" "^0.7.3"
+    events "^3.3.0"
+
 "@feathersjs/feathers@^4.5.15":
   version "4.5.15"
   resolved "https://registry.yarnpkg.com/@feathersjs/feathers/-/feathers-4.5.15.tgz#7eaae343e2c72818edebe7813f610028e6288baa"
@@ -383,7 +406,7 @@
     events "^3.3.0"
     uberproto "^2.0.6"
 
-"@feathersjs/feathers@^5.0.0-pre.20":
+"@feathersjs/feathers@^5.0.0-pre.18", "@feathersjs/feathers@^5.0.0-pre.20":
   version "5.0.0-pre.27"
   resolved "https://registry.yarnpkg.com/@feathersjs/feathers/-/feathers-5.0.0-pre.27.tgz#5dd356894c581f0f3c348b9d11aa1f951f624442"
   integrity sha512-Qe+Nqr2RgJqgBpWabWa27WX9X++mzSqmK+Vcf1VkhL86ZLRkS2IbeYzYW4ikmYPyr/jHB6k3PR0o+JgKC/sRjg==
@@ -392,7 +415,7 @@
     "@feathersjs/hooks" "^0.7.5"
     events "^3.3.0"
 
-"@feathersjs/hooks@^0.7.5":
+"@feathersjs/hooks@^0.7.3", "@feathersjs/hooks@^0.7.5":
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@feathersjs/hooks/-/hooks-0.7.5.tgz#89907b480462b2fe524094db34cf0c2dab34ad3b"
   integrity sha512-xHbWPCJ5upr9eDdRSuJgWSKgCLN07YLvVjS7PdDqWrEz/iz5YBqoIQOzHhNPsWXOA6T7v+ArifrTUitG+ZzIRA==
@@ -978,6 +1001,11 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
+"@types/lz-string@^1.3.34":
+  version "1.3.34"
+  resolved "https://registry.yarnpkg.com/@types/lz-string/-/lz-string-1.3.34.tgz#69bfadde419314b4a374bf2c8e58659c035ed0a5"
+  integrity sha512-j6G1e8DULJx3ONf6NdR5JiR2ZY3K3PaaqiEuKYkLQO0Czfi1AzrtjfnfCROyWGeDd5IVMKCwsgSmMip9OWijow==
+
 "@types/mime@^1":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-1.3.2.tgz#93e25bf9ee75fe0fd80b594bc4feb0e862111b5a"
@@ -1562,6 +1590,11 @@ bser@2.1.1:
   integrity sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==
   dependencies:
     node-int64 "^0.4.0"
+
+bson-objectid@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/bson-objectid/-/bson-objectid-2.0.3.tgz#d840185172846b2f10c42ce2bcdb4a50956a9db5"
+  integrity sha512-WYwVtY9yqk179EPMNuF3vcxufdrGLEo2XwqdRVbfLVe9X6jLt7WKZQgP+ObOcprakBGbHxzl76tgTaieqsH29g==
 
 buffer-crc32@^0.2.1, buffer-crc32@^0.2.13:
   version "0.2.13"
@@ -2578,6 +2611,11 @@ external-editor@^3.0.3:
     iconv-lite "^0.4.24"
     tmp "^0.0.33"
 
+fast-copy@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-2.1.3.tgz#bf6e05ac3cb7a9d66fbf12c51dd4440e9ddd4afb"
+  integrity sha512-LDzYKNTHhD+XOp8wGMuCkY4eTxFZOOycmpwLBiuF3r3OjOmZnURRD8t2dUAbmKuXGbo/MGggwbSjcBdp8QT0+g==
+
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
@@ -2594,7 +2632,7 @@ fast-glob@3.2.11, fast-glob@^3.2.9:
     merge2 "^1.3.0"
     micromatch "^4.0.4"
 
-fast-json-stable-stringify@2.x, fast-json-stable-stringify@^2.0.0:
+fast-json-stable-stringify@2.x, fast-json-stable-stringify@^2.0.0, fast-json-stable-stringify@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
@@ -2627,6 +2665,25 @@ feathers-memory@^4.1.0:
     "@feathersjs/commons" "^4.3.0"
     "@feathersjs/errors" "^4.3.4"
     sift "^8.5.0"
+
+feathers-pinia@^0.34.0:
+  version "0.34.0"
+  resolved "https://registry.yarnpkg.com/feathers-pinia/-/feathers-pinia-0.34.0.tgz#7cc802c9db75e39c21474ebe0be9cfb8200a97a7"
+  integrity sha512-xjHYNDqbb9osMIPny9ugx7kTss1ogR4XHuZ+kXSimnnk69yZcOWGS+D8vUN9r1JZl9AOkPtx4JQc55HXyJWtlw==
+  dependencies:
+    "@feathersjs/adapter-commons" "5.0.0-pre.18"
+    "@feathersjs/commons" "5.0.0-pre.18"
+    "@feathersjs/feathers" "5.0.0-pre.18"
+    "@types/lz-string" "^1.3.34"
+    bson-objectid "^2.0.3"
+    events "^3.3.0"
+    fast-copy "^2.1.3"
+    fast-json-stable-stringify "^2.1.0"
+    just-debounce "^1.1.0"
+    lodash "^4.17.21"
+    lz-string "^1.4.4"
+    sift "^16.0.0"
+    vue-demi latest
 
 feathers-swagger@^1.2.2:
   version "1.2.2"
@@ -3597,6 +3654,11 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+just-debounce@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/just-debounce/-/just-debounce-1.1.0.tgz#2f81a3ad4121a76bc7cb45dbf704c0d76a8e5ddf"
+  integrity sha512-qpcRocdkUmf+UTNBYx5w6dexX5J31AKK1OmPwH630a83DdVVUIngk55RSAiIGpQyoH0dlr872VHfPjnQnK1qDQ==
+
 kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
@@ -3724,6 +3786,11 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+lz-string@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/lz-string/-/lz-string-1.4.4.tgz#c0d8eaf36059f705796e1e344811cf4c498d3a26"
+  integrity sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==
 
 magic-string@^0.25.7:
   version "0.25.9"
@@ -4552,6 +4619,11 @@ side-channel@^1.0.4:
     get-intrinsic "^1.0.2"
     object-inspect "^1.9.0"
 
+sift@^16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/sift/-/sift-16.0.0.tgz#447991577db61f1a8fab727a8a98a6db57a23eb8"
+  integrity sha512-ILTjdP2Mv9V1kIxWMXeMTIRbOBrqKc4JAXmFMnFq3fKeyQ2Qwa3Dw1ubcye3vR+Y6ofA0b9gNDr/y2t6eUeIzQ==
+
 sift@^8.5.0:
   version "8.5.1"
   resolved "https://registry.yarnpkg.com/sift/-/sift-8.5.1.tgz#22a29e1a3332e8f8d372dc5999f5cc3093778fe8"
@@ -5050,7 +5122,7 @@ vite@2.9.13:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue-demi@*:
+vue-demi@*, vue-demi@latest:
   version "0.13.5"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.5.tgz#d5eddbc9eaefb89ce5995269d1fa6b0486312092"
   integrity sha512-tO3K2bML3AwiHmVHeKCq6HLef2st4zBXIV5aEkoJl6HZ+gJWxWv2O8wLH8qrA3SX3lDoTDHNghLX1xZg83MXvw==

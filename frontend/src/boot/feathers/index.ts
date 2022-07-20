@@ -2,6 +2,7 @@ import { InjectionKey, App as AppVue } from 'vue'
 import { Application, Service } from '@feathersjs/feathers'
 import feathers from '@feathersjs/feathers'
 import { EntityModel as Entity } from 'backend/src/services/entities/entities.model'
+import { setupFeathersPinia } from 'feathers-pinia'
 
 export type EntityModel = Entity
 
@@ -23,4 +24,9 @@ export function bootstrap(app: AppVue, configure: ConfigureFn) {
 
   app.provide(apiKey, api)
   app.provide(entityApiKey, entityApi)
+
+  setupFeathersPinia({
+    clients: { api },
+    idField: 'id',
+  })
 }

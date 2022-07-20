@@ -21,10 +21,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, computed, watch } from 'vue';
-import { EntityModel, entityApiKey } from 'boot/feathers';
+import { defineComponent, ref, computed, watch } from 'vue';
+import { EntityModel } from 'boot/feathers';
 import { useQuasar } from 'quasar';
 import { useRoute } from 'vue-router';
+import { useEntitiesStore } from 'src/stores/entities';
 
 export default defineComponent({
   name: 'IndexPage',
@@ -35,14 +36,17 @@ export default defineComponent({
       { name: 'id', label: 'Id', field: 'id', sortable: true, align: 'center' },
       { name: 'name', label: 'Name', field: 'name', sortable: true },
       { name: 'actions', label: 'Actions', field: 'id', align: 'center' }
-    ]))
+    ] as never[]))
 
-    const entityApi = inject(entityApiKey)
+    const entitiesStore = useEntitiesStore()
     const entities = ref<EntityModel[]>([])
+    
     async function init () {
-      const result = await entityApi?.find()
+      const result = await entitiesStore.find({ query: {} })
       if (Array.isArray(result)) {
         entities.value = result
+      } else {
+        entities.value = result.data
       }
     }
     watch(() => route.name, () => {
@@ -50,6 +54,7 @@ export default defineComponent({
         init()
       }
     }, { immediate: true })
+
     return {
       columns,
       entities,
@@ -65,7 +70,7 @@ export default defineComponent({
           message: 'Do you sure?'
         }).onOk(async () => {
           try {
-            await entityApi?.remove(id)
+            await entitiesStore.remove(id)
             quasar.notify({
               color: 'positive',
               message: 'Bye Bye Entity!'

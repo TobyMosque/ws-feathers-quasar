@@ -20,6 +20,7 @@
 <script lang="ts">
 import { uid, useQuasar } from 'quasar';
 import { entityApiKey, EntityModel } from 'src/boot/feathers';
+import { useEntitiesStore } from 'src/stores/entities';
 import { defineComponent, computed, ref, watch, inject, reactive, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -31,7 +32,7 @@ export default defineComponent({
   setup (props) {
     const quasar = useQuasar()
     const router = useRouter()
-    const entityApi = inject(entityApiKey)
+    const entitiesStore = useEntitiesStore()
     const state = reactive<EntityModel>({
       id: '',
       name: ''
@@ -42,7 +43,7 @@ export default defineComponent({
     async function init () {
       let result: EntityModel | undefined
       if (_id.value) {
-        result = await entityApi?.get(_id.value)
+        result = await entitiesStore.get(_id.value)
       }
       if (!result) {
         entityId.value = ''
@@ -56,7 +57,7 @@ export default defineComponent({
 
     async function create() {
       try {
-        await entityApi?.create({
+        await entitiesStore.create({
           id: uid(),
           name: name.value
         })
@@ -73,7 +74,7 @@ export default defineComponent({
     }
     async function update(id: EntityModel['id']) {
       try {
-        await entityApi?.update(id, {
+        await entitiesStore.update(id, {
           id: id,
           name: name.value
         })
@@ -93,7 +94,6 @@ export default defineComponent({
       open: ref(true),
       entityId,
       name,
-      
       async upsert() {
         if (entityId.value) {
           await update(entityId.value)
