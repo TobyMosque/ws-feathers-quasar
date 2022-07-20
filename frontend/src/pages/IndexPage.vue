@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    {{entities}}
+    {{ entities }}
   </q-page>
 </template>
 
@@ -11,25 +11,25 @@ import { uid } from 'quasar';
 
 export default defineComponent({
   name: 'IndexPage',
-  setup () {
-    const entityApi = inject(entityApiKey)
-    const entities = ref<Entity[]>([])
-    async function doSomething () {
+  setup() {
+    const entityApi = inject(entityApiKey);
+    const entities = ref<Entity[]>([]);
+    async function doSomething() {
       await entityApi?.create({
         id: uid(),
-        name: 'new entity '
-      })
+        name: 'new entity ',
+      });
 
-      const result = await entityApi?.find()
+      const result = await entityApi?.find();
       if (Array.isArray(result)) {
-        entities.value = result
-        console.log(entities.value)
+        entities.value = result;
+        console.log(entities.value);
       }
     }
     onMounted(() => {
-      doSomething()
-    })
+      doSomething();
+    });
     return { entities };
-  }
+  },
 });
 </script>
