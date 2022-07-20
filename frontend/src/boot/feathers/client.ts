@@ -5,8 +5,8 @@ import { bootstrap } from '.';
 
 // "async" is optional;
 // more info on params: https://v2.quasar.dev/quasar-cli/boot-files
-export default boot(async ({ app }) => {
+export default boot(async (_) => {
   const apiClient = axios.create({ baseURL: '/' });
   const restClient = rest()
-  bootstrap(app, restClient.axios(apiClient))
+  bootstrap({ services: restClient.axios(apiClient) })
 })
