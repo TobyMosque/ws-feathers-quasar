@@ -35,7 +35,7 @@ export default defineComponent({
       { name: 'id', label: 'Id', field: 'id', sortable: true, align: 'center' },
       { name: 'name', label: 'Name', field: 'name', sortable: true },
       { name: 'actions', label: 'Actions', field: 'id', align: 'center' }
-    ]))
+    ] as never[]))
 
     const entityApi = inject(entityApiKey)
     const entities = ref<EntityModel[]>([])
