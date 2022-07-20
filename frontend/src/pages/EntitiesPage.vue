@@ -82,7 +82,6 @@ export default defineComponent({
       },
       { immediate: true }
     );
-
     return {
       columns,
       entities,
