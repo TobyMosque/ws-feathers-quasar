@@ -12,15 +12,13 @@ http://localhost:3030/api/docs/ #Swagger UI
 
 **how to test the frontend**
 
-compile the backend:
+run the frontend:
 ```bash
 yarn # install depedencies
-yarn workspace backend compile
-```
-so run the frontend
-```bash
 yarn workspace frontend quasar dev -m ssr
 ```
+PS: the HRM only works to the frontend.
+
 access the frontend
 ```bash
 http://localhost:9100/ #frontend
