@@ -19,9 +19,9 @@
 
 <script lang="ts">
 import { uid, useQuasar } from 'quasar';
-import { entityApiKey, EntityModel } from 'src/boot/feathers';
+import { EntityModel } from 'src/boot/feathers';
 import { useEntitiesStore } from 'src/stores/entities';
-import { defineComponent, computed, ref, watch, inject, reactive, toRefs } from 'vue';
+import { defineComponent, computed, ref, watch, reactive, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 
 export default defineComponent({
