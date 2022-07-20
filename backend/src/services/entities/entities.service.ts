@@ -3,11 +3,13 @@ import { ServiceAddons } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
 import { Entities } from './entities.class';
 import hooks from './entities.hooks';
+import { EntityModel } from './entities.model';
+import schema from './entities.schema';
 
 // Add this service to the service type index
 declare module '../../declarations' {
   interface ServiceTypes {
-    'api/entity': Entities & ServiceAddons<any>;
+    'api/entity': Entities & ServiceAddons<EntityModel>;
   }
 }
 
@@ -18,19 +20,7 @@ export default function (app: Application): void {
 
   // Initialize our service with any options it requires
   const handler = new Entities(options, app);
-  app.use('/api/entity', Object.assign(handler, {
-    docs:  {
-      description: 'Entity',
-      definition: {
-        type: 'object',
-        required: [ 'id', 'name' ],
-        properties: {
-          username: { type: 'string', description: 'Id' },
-          password: { type: 'string', description: 'Name' }
-        }
-      }
-    }
-  }));
+  app.use('/api/entity', Object.assign(handler, schema));
 
   // Get our initialized service so that we can register hooks
   const service = app.service('api/entity');

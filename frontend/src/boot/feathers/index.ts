@@ -1,13 +1,26 @@
-import { InjectionKey } from 'vue'
+import { InjectionKey, App as AppVue } from 'vue'
 import { Application, Service } from '@feathersjs/feathers'
+import feathers from '@feathersjs/feathers'
+import { EntityModel as Entity } from 'backend/src/services/entities/entities.model'
 
-export interface Entity {
-  id: string
-  name: string
-}
+export type EntityModel = Entity
 
 export type App = Application<{
-  '/api/entity': Service<Entity>
+  '/api/entity': Service<EntityModel>
 }>
 
-export const entityApiKey: InjectionKey<Service<Entity>> = Symbol('entity-key')
+export const apiKey: InjectionKey<App> = Symbol('api-key')
+export const entityApiKey: InjectionKey<Service<EntityModel>> = Symbol('entity-api-key')
+export type ConfigureFn = Parameters<App['configure']>[0]
+
+// "async" is optional;
+// more info on params: https://v2.quasar.dev/quasar-cli/boot-files
+export function bootstrap(app: AppVue, configure: ConfigureFn) {
+  const api = feathers() as App
+
+  api.configure(configure)
+  const entityApi = api.service('/api/entity')
+
+  app.provide(apiKey, api)
+  app.provide(entityApiKey, entityApi)
+}
