@@ -20,7 +20,7 @@ export default function (app: Application): void {
 
   // Initialize our service with any options it requires
   const handler = new Entities(options, app);
-  app.use('/api/entity', Object.assign(handler, schema));
+  app.use('/api/entity', Object.assign(handler, { docs: schema }));
 
   // Get our initialized service so that we can register hooks
   const service = app.service('api/entity');
