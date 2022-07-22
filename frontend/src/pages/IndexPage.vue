@@ -1,35 +1,49 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    {{ entities }}
+    <example-component
+      title="Example component"
+      active
+      :todos="todos"
+      :meta="meta"
+    ></example-component>
   </q-page>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, onMounted, ref } from 'vue';
-import { Entity, entityApiKey } from 'boot/feathers';
-import { uid } from 'quasar';
+import { Todo, Meta } from 'components/models';
+import ExampleComponent from 'components/ExampleComponent.vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'IndexPage',
+  components: { ExampleComponent },
   setup() {
-    const entityApi = inject(entityApiKey);
-    const entities = ref<Entity[]>([]);
-    async function doSomething() {
-      await entityApi?.create({
-        id: uid(),
-        name: 'new entity ',
-      });
-
-      const result = await entityApi?.find();
-      if (Array.isArray(result)) {
-        entities.value = result;
-        console.log(entities.value);
+    const todos = ref<Todo[]>([
+      {
+        id: 1,
+        content: 'ct1'
+      },
+      {
+        id: 2,
+        content: 'ct2'
+      },
+      {
+        id: 3,
+        content: 'ct3'
+      },
+      {
+        id: 4,
+        content: 'ct4'
+      },
+      {
+        id: 5,
+        content: 'ct5'
       }
-    }
-    onMounted(() => {
-      doSomething();
+    ]);
+    const meta = ref<Meta>({
+      totalCount: 1200
     });
-    return { entities };
-  },
+    return { todos, meta };
+  }
 });
 </script>

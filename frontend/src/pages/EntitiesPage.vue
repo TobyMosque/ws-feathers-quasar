@@ -36,17 +36,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { EntityModel } from 'boot/feathers';
 import { useQuasar } from 'quasar';
-import { useRoute } from 'vue-router';
 import { useEntitiesStore } from 'src/stores/entities';
+import { storeToRefs } from 'pinia';
 
 export default defineComponent({
   name: 'IndexPage',
+  async preFetch ({ store }) {
+    const entitiesStore = useEntitiesStore(store);
+    return entitiesStore.find({ query: {} });
+  },
   setup() {
     const quasar = useQuasar();
-    const route = useRoute();
     const columns = computed(
       () =>
         [
@@ -63,25 +66,12 @@ export default defineComponent({
     );
 
     const entitiesStore = useEntitiesStore();
-    const entities = ref<EntityModel[]>([]);
-
-    async function init() {
-      const result = await entitiesStore.find({ query: {} });
-      if (Array.isArray(result)) {
-        entities.value = result;
-      } else {
-        entities.value = result.data;
-      }
+    if (process.env.DEBUGGING && process.env.CLIENT) {
+      // since the entities service extends the in memory service, we need to requery...
+      entitiesStore.find({ query: {} })
     }
-    watch(
-      () => route.name,
-      () => {
-        if (route.name === 'entities') {
-          init();
-        }
-      },
-      { immediate: true }
-    );
+    
+    const { items: entities } = storeToRefs(entitiesStore)
     return {
       columns,
       entities,
@@ -104,7 +94,6 @@ export default defineComponent({
                 color: 'positive',
                 message: 'Bye Bye Entity!',
               });
-              entities.value.splice(index, 1);
             } catch {
               quasar.notify({
                 color: 'negative',

@@ -1,10 +1,10 @@
 import feathers from '@feathersjs/feathers';
-import { EntityModel as Entity } from 'backend/src/services/entities/entities.model';
-import { Application } from 'backend/src/declarations';
+import { EntityModel as Entity } from 'backend/lib/services/entities/entities.model';
+import { Application } from 'backend/lib/declarations';
 import { setupFeathersPinia } from 'feathers-pinia';
 import auth from '@feathersjs/authentication-client';
 import { Cookies } from 'quasar';
-import { QSsrContext } from '@quasar/app-vite';
+import { QSsrContext } from '@quasar/app-webpack';
 
 export type EntityModel = Entity;
 

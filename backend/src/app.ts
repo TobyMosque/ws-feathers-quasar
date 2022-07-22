@@ -1,26 +1,24 @@
-import compress from "compression";
-import helmet from "helmet";
-import cors from "cors";
-import path from "path";
+import compress from 'compression';
+import helmet from 'helmet';
+import cors from 'cors';
 
-import feathers from "@feathersjs/feathers";
-import configuration from "@feathersjs/configuration";
-import express from "@feathersjs/express";
+import feathers from '@feathersjs/feathers';
+import configuration from '@feathersjs/configuration';
+import express, { Application } from '@feathersjs/express';
 
-import { Application } from "./declarations";
-import logger from "./logger";
-import middleware from "./middleware";
-import services from "./services";
-import appHooks from "./app.hooks";
-import channels from "./channels";
-import { HookContext as FeathersHookContext } from "@feathersjs/feathers";
+import logger from './logger';
+import middleware from './middleware';
+import services from './services';
+import appHooks from './app.hooks';
+import channels from './channels';
+import { HookContext as FeathersHookContext } from '@feathersjs/feathers';
 // Don't remove this comment. It's needed to format import lines nicely.
 export type HookContext<T = any> = {
   app: Application;
 } & FeathersHookContext<T>;
-import swagger from "feathers-swagger";
+import swagger from 'feathers-swagger';
 
-import { Express } from "express";
+import { Express } from 'express';
 
 export default function bootstrap(expressApp: Express) {
   const app: Application = (express as any)(feathers(), expressApp);
@@ -39,13 +37,13 @@ export default function bootstrap(expressApp: Express) {
   app.use(express.urlencoded({ extended: true }));
   app.configure(
     swagger({
-      docsPath: "/api/docs",
+      docsPath: '/api/docs',
       uiIndex: true,
       specs: {
         info: {
-          title: "A test",
-          description: "A description",
-          version: "1.0.0",
+          title: 'A test',
+          description: 'A description',
+          version: '1.0.0',
         },
       },
     })

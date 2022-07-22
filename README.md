@@ -15,6 +15,8 @@ http://localhost:3030/api/docs/ #Swagger UI
 run the frontend:
 ```bash
 yarn # install depedencies
+# you would compile the backend at least once and after update the source of the backend
+yarn workspace backend compile
 yarn workspace frontend quasar dev -m ssr
 ```
 PS: the HRM only works to the frontend.

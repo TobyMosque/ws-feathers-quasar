@@ -1,5 +1,5 @@
 import { boot } from 'quasar/wrappers';
-import services from 'backend/src/services/index';
+import services from 'backend/lib/services/index';
 import { bootstrap } from './index';
 
 // "async" is optional;
