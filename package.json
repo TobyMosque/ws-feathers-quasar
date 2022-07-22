@@ -5,8 +5,10 @@
   },
   "scripts": {
     "backend:compile": "yarn workspace backend compile",
-    "frontend:dev": "yarn workspace frontend quasar dev -m ssr",
-    "frontend:build": "yarn workspace frontend quasar build -m ssr --debug",
+    "backend:dev": "yarn workspace backend dev",
+    "frontend:dev": "QENV=dev-embed yarn workspace frontend quasar dev -m ssr",
+    "frontend:dev2": "QENV=dev yarn workspace frontend quasar dev -m ssr",
+    "frontend:build": "QENV=prod yarn workspace frontend quasar build -m ssr --debug",
     "frontend:build:install": "cd frontend/dist/ssr && yarn --prod && cd -",
     "frontend:build:copy": "cd frontend/dist/ssr/ && mkdir config && cd - && cd frontend/dist/ssr/node_modules/backend && mkdir lib && cd - && cp -R backend/config/. frontend/dist/ssr/config/ && cp -R backend/lib/. frontend/dist/ssr/node_modules/backend/lib/",
     "dev": "yarn backend:compile && yarn frontend:dev",

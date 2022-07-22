@@ -8,6 +8,10 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 const { configure } = require('quasar/wrappers');
+const path = require('path')
+const envName = process.env.QENV || 'dev'
+const envPath = path.join('envs', envName + '.env')
+require('dotenv').config({ path: envPath })
 
 function merge (source, target) {
   const keys = Object.keys(target)
@@ -34,6 +38,7 @@ function merge (source, target) {
 }
 
 module.exports = configure(function (ctx) {
+  const embedded = process.env.API_EMBEDDED === 'true'
   return {
     eslint: {
       // fix: true,
@@ -52,7 +57,7 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
       { path: 'feathers/client', server: false },
-      { path: 'feathers/server' + (ctx.dev ?  '-debug' : ''), client: false },
+      { path: 'feathers/server' + (embedded && !ctx.dev ?  '-embed' : ''), client: false },
       // 'axios',
     ],
 
@@ -81,6 +86,11 @@ module.exports = configure(function (ctx) {
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'
+      env: {
+        API_URL_CLIENT: process.env.API_URL_CLIENT,
+        API_URL_SERVER: process.env.API_URL_SERVER,
+        API_EMBEDDED: embedded,
+      },
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -175,7 +185,7 @@ module.exports = configure(function (ctx) {
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
-        'backend',
+        embedded ? 'backend' : '',
         'render', // keep this as last one
       ],
     },
