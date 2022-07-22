@@ -5,5 +5,5 @@ import { bootstrap } from './index';
 // "async" is optional;
 // more info on params: https://v2.quasar.dev/quasar-cli/boot-files
 export default boot(async ({ ssrContext }) => {
-  bootstrap({ ssrContext, services: services });
+  bootstrap({ ssrContext, services });
 });

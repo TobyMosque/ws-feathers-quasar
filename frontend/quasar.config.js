@@ -7,10 +7,33 @@
 
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
-
 const { configure } = require('quasar/wrappers');
 
-module.exports = configure(function (/* ctx */) {
+function merge (source, target) {
+  const keys = Object.keys(target)
+  for (const key of keys) {
+    const option = target[key]
+    if (typeof option === 'object') {
+      if (Array.isArray(option)) {
+        if (!source[key]) {
+          source[key] = []
+        }
+        for (const item of option) {
+          source[key].push(item)
+        }
+      } else {
+        if (!source[key]) {
+          source[key] = {}
+        }
+        merge(source[key], option)
+      }
+    } else {
+      source[key] = option
+    }
+  }
+}
+
+module.exports = configure(function (ctx) {
   return {
     eslint: {
       // fix: true,
@@ -22,14 +45,14 @@ module.exports = configure(function (/* ctx */) {
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
-    // preFetch: true,
+    preFetch: true,
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
       { path: 'feathers/client', server: false },
-      { path: 'feathers/server', client: false },
+      { path: 'feathers/server' + (ctx.dev ?  '-debug' : ''), client: false },
       // 'axios',
     ],
 
@@ -74,24 +97,19 @@ module.exports = configure(function (/* ctx */) {
       // distDir
 
       extendViteConf (viteConf) {
-        if (!viteConf.optimizeDeps) {
-          viteConf.optimizeDeps = {}
-        }
-        if (!viteConf.optimizeDeps.include) {
-          viteConf.optimizeDeps.include = []
-        }
-        viteConf.optimizeDeps.include.push('backend')
-
-        if (!viteConf.build) {
-          viteConf.build = {}
-        }
-        if (!viteConf.build.commonjsOptions) {
-          viteConf.build.commonjsOptions = {}
-        }
-        if (!viteConf.build.commonjsOptions.exclude) {
-          viteConf.build.commonjsOptions.exclude = []
-        }
-        viteConf.build.commonjsOptions.exclude.push('backend')
+        merge(viteConf, {
+          plugins: [],
+          optimizeDeps: {
+            plugins: [],
+            include: ['backend']
+          },
+          build: {
+            commonjsOptions: {
+              exclude: ['backend'],
+              include: []
+            }
+          }
+        })
       },
       // viteVuePluginOptions: {},
 
