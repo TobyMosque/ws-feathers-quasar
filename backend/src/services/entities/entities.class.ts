@@ -1,6 +1,6 @@
-import { Service, MemoryServiceOptions } from "feathers-memory";
-import { Application } from "../../declarations";
-import { EntityModel } from "./entities.model";
+import { Service, MemoryServiceOptions } from 'feathers-memory';
+import { Application } from '../../declarations';
+import { EntityModel } from './entities.model';
 
 export class Entities extends Service<EntityModel> {
   static docs: any;

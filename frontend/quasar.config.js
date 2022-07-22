@@ -73,7 +73,26 @@ module.exports = configure(function (/* ctx */) {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf (viteConf) {
+        if (!viteConf.optimizeDeps) {
+          viteConf.optimizeDeps = {}
+        }
+        if (!viteConf.optimizeDeps.include) {
+          viteConf.optimizeDeps.include = []
+        }
+        viteConf.optimizeDeps.include.push('backend')
+
+        if (!viteConf.build) {
+          viteConf.build = {}
+        }
+        if (!viteConf.build.commonjsOptions) {
+          viteConf.build.commonjsOptions = {}
+        }
+        if (!viteConf.build.commonjsOptions.exclude) {
+          viteConf.build.commonjsOptions.exclude = []
+        }
+        viteConf.build.commonjsOptions.exclude.push('backend')
+      },
       // viteVuePluginOptions: {},
 
       // vitePlugins: [

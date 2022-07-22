@@ -3,5 +3,14 @@
   "workspaces": {
     "packages": ["frontend", "backend"]
   },
-  "scripts": {}
+  "scripts": {
+    "backend:compile": "yarn workspace backend compile",
+    "frontend:dev": "yarn workspace frontend quasar dev -m ssr",
+    "frontend:build": "yarn workspace frontend quasar build -m ssr --debug",
+    "frontend:build:install": "cd frontend/dist/ssr && yarn --prod && cd -",
+    "frontend:build:copy": "cd frontend/dist/ssr/ && mkdir config && cd - && cd frontend/dist/ssr/node_modules/backend && mkdir lib && cd - && cp -R backend/config/. frontend/dist/ssr/config/ && cp -R backend/lib/. frontend/dist/ssr/node_modules/backend/lib/",
+    "dev": "yarn backend:compile && yarn frontend:dev",
+    "build": "yarn backend:compile && yarn frontend:build && yarn frontend:build:install && yarn frontend:build:copy",
+    "serve": "cd frontend/dist/ssr && quasar serve && cd -"
+  }
 }
