@@ -3,7 +3,7 @@
 run the backend
 ```bash
 yarn # install depedencies
-yarn workspace backend dev
+yarn backend:dev
 ```
 access the swagger ui
 ```bash
@@ -15,8 +15,8 @@ http://localhost:3030/api/docs/ #Swagger UI
 run the frontend:
 ```bash
 yarn # install depedencies
-yarn workspace backend compile
-QENV=dev-embed yarn workspace frontend quasar dev -m ssr
+yarn backend:compile # you would compile the backend if you wanna embed that into the frontend
+yarn frontend:dev # or `yarn frontend:dev2` if u don't wanna to embed the backend, don't forget to run `yarn backend:dev`in parallel
 ```
 PS: the HRM only works to the frontend.
 
@@ -24,5 +24,5 @@ access the frontend
 ```bash
 http://localhost:9100/ #frontend
 and
-http://localhost:9100/api/docs/ #Swagger UI
+http://localhost:9100/api/docs/ #Swagger UI (only if embeded)
 ```
