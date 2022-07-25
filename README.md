@@ -16,7 +16,7 @@ run the frontend:
 ```bash
 yarn # install depedencies
 yarn backend:compile # you would compile the backend if you wanna embed that into the frontend
-yarn frontend:dev # or `yarn frontend:dev2` if u don't wanna to embed the backend, don't forget to run `yarn backend:dev`in parallel
+yarn frontend:dev # or `yarn frontend:dev2` if you don't wanna to embed the backend, don't forget to run `yarn backend:dev`in parallel
 ```
 PS: the HRM only works to the frontend.
 
