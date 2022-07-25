@@ -16,7 +16,7 @@ run the frontend:
 ```bash
 yarn # install depedencies
 yarn workspace backend compile
-yarn workspace frontend quasar dev -m ssr
+QENV=dev-embed yarn workspace frontend quasar dev -m ssr
 ```
 PS: the HRM only works to the frontend.
 
